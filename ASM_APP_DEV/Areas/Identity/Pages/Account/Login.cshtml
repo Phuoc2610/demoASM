@@ -1,0 +1,115 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<style>
+    .login__img {
+        position: relative;
+
+    }
+    .login__form {
+        position: absolute;
+        width: 500px;
+        min-height: 350px;
+        margin: 120px 0 auto;
+        left: 35%;
+        background: rgba(0,0,0,0.8);
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        padding: 40px 30px;
+        text-align: center
+    }
+    .login__form h1{
+        color: #ff6600;
+    }
+    .login__form input{
+        padding: 10px 60px;
+        margin: 5px 0;
+        color: #ff6600;
+        border: solid 2px #e7e7e7;
+           text-align: center;
+    }
+
+     .login__form .form-group input:focus{
+         border: solid 2px #ff6600;
+         color: #ff6600;
+     }
+
+    .login__form button{
+        padding: 10px 50px;
+        width: 100%;
+        font-weight: 700;
+        font-size: 16px;
+        color:white;
+        cursor:pointer;
+        background: #ff6600;
+        transition: all 0.5s;
+        border: none;
+    }
+    .login__form button:hover{
+        transform: translateY(-5px);
+        color:#ff6600;
+        background: #4c4957;
+    }
+    .checkbox{
+        color: white;
+    }
+
+    .login__form .form-group a{
+        color: white;
+    }
+
+    .login__form .form-group a:hover{
+        color: #ff6600;
+        transition: all 0.5s
+    }
+    footer{
+        display: none;
+    }
+</style>
+
+<div class="row login container-fluid">
+    <div class="login__img">
+        <img src="https://demo.w3layouts.com/demos_new/template_demo/24-01-2018/library_membership_form-demo_Free/902134896/web/images/bg.jpg" alt="#">
+    </div>
+    <div class="login__form container">
+        <section >
+            <form id="account" method="post">
+                <h1>@ViewData["Title"]</h1>
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group row">
+                    <div class="checkbox col-6">
+                        <label asp-for="Input.RememberMe">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                    <div class="col-6">
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
